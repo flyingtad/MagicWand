@@ -1,0 +1,137 @@
+INFO:ouimeaux.environment:Discovering devices
+INFO:ouimeaux.environment:Unrecognized device type. USN=uuid:05b031e3-2c88-d15f-b38d-e239f8e4ff9f::upnp:rootdevice
+INFO:ouimeaux.environment:Unrecognized device type. USN=uuid:c9812a53-399a-0df8-5968-e468806712dd::upnp:rootdevice
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:ouimeaux.environment:Found device <WeMo Switch "Bedroom Lamp"> at ('192.168.1.201', 3103)
+INFO:ouimeaux.subscribe:Subscribing to basic events from <WeMo Switch "Bedroom Lamp">
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.1.201
+INFO:root:Locomotor was found::
+INFO:root:gesture = 3, length = 30
+INFO:root:gesture = 10, length = 11
+INFO:root:gesture = 4, length = 29
+INFO:root:gesture = 10, length = 28
+INFO:root:gesture = 8, length = 29
+INFO:root:Mimblewimble was found::
+INFO:root:gesture = 3, length = 2
+INFO:root:gesture = 1, length = 9
+INFO:root:gesture = 14, length = 26
+INFO:root:gesture = 3, length = 6
+INFO:root:gesture = 10, length = 3
+INFO:root:gesture = 0, length = 103
+INFO:root:Locomotor was found::
+INFO:root:gesture = 10, length = 21
+INFO:root:gesture = 4, length = 32
+INFO:root:gesture = 10, length = 29
+INFO:root:gesture = 8, length = 37
+INFO:root:Locomotor was found::
+INFO:root:gesture = 4, length = 29
+INFO:root:gesture = 10, length = 26
+INFO:root:gesture = 8, length = 32
+INFO:root:Descendo was found::
+INFO:root:gesture = 16, length = 68
+INFO:root:Incendio was found::
+INFO:root:gesture = 1, length = 28
+INFO:root:gesture = 2, length = 31
+INFO:root:gesture = 3, length = 33
+INFO:root:Ascendio was found::
+INFO:root:gesture = 10, length = 16
+INFO:root:gesture = 17, length = 3
+INFO:root:Locomotor was found::
+INFO:root:gesture = 10, length = 23
+INFO:root:gesture = 8, length = 42
+INFO:root:gesture = 5, length = 3
+INFO:root:gesture = 3, length = 35
+INFO:root:gesture = 4, length = 25
+INFO:root:gesture = 10, length = 25
+INFO:root:gesture = 8, length = 22
+INFO:root:Herbivicus was found::
+INFO:root:gesture = 5, length = 27
+INFO:root:gesture = 15, length = 21
+INFO:root:Descendo was found::
+INFO:root:gesture = 14, length = 4
+INFO:root:gesture = 4, length = 26
+INFO:root:gesture = 16, length = 70
+INFO:root:Locomotor was found::
+INFO:root:gesture = 4, length = 9
+INFO:root:gesture = 10, length = 3
+INFO:root:gesture = 4, length = 28
+INFO:root:gesture = 10, length = 23
+INFO:root:gesture = 8, length = 30
+INFO:root:Locomotor was found::
+INFO:root:gesture = 8, length = 33
+INFO:root:gesture = 3, length = 46
+INFO:root:gesture = 4, length = 27
+INFO:root:gesture = 10, length = 20
+INFO:root:gesture = 8, length = 27
+INFO:root:Alohomora was found::
+INFO:root:gesture = 7, length = 74
+INFO:root:gesture = 5, length = 23
+INFO:root:Alohomora was found::
+INFO:root:gesture = 7, length = 70
+INFO:root:gesture = 5, length = 22
+INFO:root:Ascendio was found::
+INFO:root:gesture = 5, length = 19
+INFO:root:gesture = 4, length = 29
+INFO:root:gesture = 17, length = 64
+INFO:root:Ascendio was found::
+INFO:root:gesture = 15, length = 24
+INFO:root:gesture = 5, length = 36
+INFO:root:gesture = 17, length = 70
+INFO:root:Metelojinx was found::
+INFO:root:gesture = 3, length = 36
+INFO:root:gesture = 15, length = 39
+INFO:root:Tarantallegra was found::
+INFO:root:gesture = 4, length = 24
+INFO:root:gesture = 6, length = 28
+INFO:root:gesture = 6, length = 27
+INFO:root:Metelojinx was found::
+INFO:root:gesture = 3, length = 11
+INFO:root:gesture = 8, length = 12
+INFO:root:gesture = 3, length = 11
+INFO:root:gesture = 15, length = 13
+INFO:root:Locomotor was found::
+INFO:root:gesture = 3, length = 38
+INFO:root:gesture = 4, length = 30
+INFO:root:gesture = 10, length = 29
+INFO:root:gesture = 8, length = 35
+INFO:root:Alohomora was found::
+INFO:root:gesture = 8, length = 15
+INFO:root:gesture = 3, length = 42
+INFO:root:gesture = 7, length = 61
+INFO:root:gesture = 5, length = 21
+INFO:root:Wingardium Leviosa was found::
+INFO:root:gesture = 4, length = 32
+INFO:root:gesture = 6, length = 28
+INFO:root:gesture = 5, length = 23
+INFO:root:Silencio was found::
+INFO:root:gesture = 5, length = 38
+INFO:root:gesture = 1, length = 45
+INFO:root:gesture = 10, length = 16
+INFO:root:gesture = 4, length = 20
+INFO:root:gesture = 5, length = 41
+INFO:root:gesture = 1, length = 36
+INFO:root:gesture = 14, length = 33
+INFO:root:gesture = 5, length = 23
+INFO:root:Locomotor was found::
+INFO:root:gesture = 4, length = 15
+INFO:root:gesture = 10, length = 13
+INFO:root:gesture = 8, length = 8
+INFO:root:Ascendio was found::
+INFO:root:gesture = 17, length = 50
+INFO:root:Alohomora was found::
+INFO:root:gesture = 7, length = 44
+INFO:root:gesture = 5, length = 21
+INFO:root:Alohomora was found::
+INFO:root:gesture = 7, length = 59
+INFO:root:gesture = 5, length = 20
