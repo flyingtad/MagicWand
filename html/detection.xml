@@ -1,0 +1,7 @@
+<detection>
+    <featThresh>30</featThresh>
+    <dThresh>3</dThresh>
+    <aThresh>65</aThresh>
+    <tThresh>.6</tThresh>
+    <intensityThresh>50</intensityThresh>
+</detection>
