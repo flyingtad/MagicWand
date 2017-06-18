@@ -2,7 +2,6 @@ import picamera
 from picamera.array import PiRGBArray
 from time import sleep
 import io
-import cv2
 import numpy as np
 import time
 import pointTracking as PT
@@ -19,7 +18,7 @@ class Wand():
         #self.preview(10)
 
     def setDetectionSettings(self):
-        config = parse("/var/www/html/detection.xml")
+        config = parse("/home/pi/MagicWand/html/detection.xml")
         allSettings = config.getElementsByTagName('detection')
         for curSetting in allSettings[0].childNodes:
             if curSetting.nodeName.startswith('#'):
@@ -31,7 +30,7 @@ class Wand():
                 setattr(self.pt,curSetting.nodeName,curSettingVal)
 
     def setCameraSettings(self):
-        camConfig = parse("/var/www/html/camera.xml")
+        camConfig = parse("/home/pi/MagicWand/html/camera.xml")
         allSettings = camConfig.getElementsByTagName('camera')
         for curSetting in allSettings[0].childNodes:
             if curSetting.nodeName.startswith('#'):
@@ -69,51 +68,8 @@ class Wand():
         self.camera.stop_preview()
 
     def getStill(self):
-        self.camera.capture('/var/www/html/image.jpg')
+        self.camera.capture('/home/pi/MagicWand/html/image.jpg')
 
-    def videoDemo(self, mode=0):
-        XDIM = self.camera.resolution[0]
-        YDIM = self.camera.resolution[1]
-    
-        rawCap = PiRGBArray(self.camera, size=(XDIM,YDIM))
-
-        sleep(0.1)
-
-        firstFrame = True
-
-        blankImage = np.zeros((XDIM,YDIM)).astype(np.uint8)
-        cv2.imshow("Frame",blankImage)
-
-        firsttime = time.time()
-        lasttime = firsttime
-
-        for frame in self.camera.capture_continuous(rawCap, format="bgr", use_video_port=True):
-            et = time.time()-lasttime
-            lasttime = time.time()
-
-            rgbnum = 2
-            image = frame.array[:,:,rgbnum].astype(int)
-        
-            if firstFrame:
-                previmage = image
-                firstFrame = False
-
-            diffimage = np.subtract(previmage,image)
-            
-            mytime = time.time() - firsttime
-            
-            diffimageshow = np.maximum(diffimage,0)
-            if mode==1:
-                cv2.imshow("Frame",diffimageshow.astype(np.uint8))
-            else:
-                cv2.imshow("Frame",image)
-            
-            rawCap.truncate(0)
-
-            previmage = image
-            print "here"
-
-        
     def detectSpells(self, saveMode=False):
         XDIM = self.camera.resolution[0]
         YDIM = self.camera.resolution[1]

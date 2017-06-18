@@ -51,16 +51,16 @@ class spells():
 
     def saveXML(self,filename):
         f = open(filename,'w')
-        f.write('<tasks>\r')
+        f.write('<tasks>\n')
         for t in self.tasks:
-            f.write('    <task>\r')
+            f.write('    <task>\n')
             for i in t.keys():
                 if i == 'na':
                     pass
                 else:
-                    f.write('    <%s>%s</%s>\r' %(i,t[i],i))
-            f.write('    </task>\r')
-        f.write('</tasks>\r')
+                    f.write('    <%s>%s</%s>\n' %(i,t[i],i))
+            f.write('    </task>\n')
+        f.write('</tasks>\n')
         f.close()
 
     def castSettings(self,x):

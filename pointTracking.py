@@ -353,22 +353,31 @@ class pointTracker():
         #search spells
         spellFound = False
         spellName = ''
+
+        #compare this to every spell
         for spell in self.spells:
+
+            #get the spell gesture sequence we are looking for
             sparray = spell[1]
+
+            #only continue if the spell you have enough gestures to compare to 
+            #current spell and the spell was enabled
             if (len(self.gestFeats)>=len(sparray)) and spell[2]:
-                #testGest = self.gestFeats[len(self.gestFeats)-len(sparray):len(self.gestFeats)-1]
-                startidx =  len(self.gestFeats)-len(sparray)
+                mindist = min(np.array(self.gestFeats)[-len(sparray):,1])
+                
+                #only proceed if the mindist exceeds a threshold
+                if mindist >= 15:
+                    startidx =  len(self.gestFeats)-len(sparray)
 
-                tc=0
-                for i in range(0,len(sparray),1):
-                    tc += abs(sparray[i]-self.gestFeats[i+startidx][0])
+                    tc=0
+                    for i in range(0,len(sparray),1):
+                        tc += abs(sparray[i]-self.gestFeats[i+startidx][0])
 
-                #tc = np.sum(abs(np.subtract(testGest,sparray)))
-                if tc==0:  #matchfound
-                    spellFound = True
-                    spellName = spell[0]
-                    #print "spell: %s" %(spell[0])
-                    #sleep(2)
+                    #tc = np.sum(abs(np.subtract(testGest,sparray)))
+                    if tc==0:  #matchfound
+                        spellFound = True
+                        spellName = spell[0]
+
         return spellFound,spellName
        
     def getGestures(self,feats):
@@ -426,21 +435,14 @@ class pointTracker():
     def angleDiffs(self,sp,ep):
         if sp>ep:
             #wrap has occurred, need to behave differently
-            #print [sp,ep]
             nep = ep+self.arraySize
             if (nep-sp)==1:
                 dsumtemp = np.array((0,self.dsum[ep]))
                 atemp = np.array((self.a[ep],self.a[ep]))
             else:
                 nsp = (sp+1)%self.arraySize
-                #dsumtemp = self.dsum[sp+1:ep+1]
                 dsumtemp = self.ga(self.dsum,[nsp,ep])
-                #atemp = self.a[sp+1:ep+1]
                 atemp = self.ga(self.a,[nsp,ep])
-                #print "outputs"
-                #print sp,ep,nsp,nep
-                #print dsumtemp
-                #print atemp
         else:
 
             if (ep-sp)==1:
@@ -448,9 +450,7 @@ class pointTracker():
                 atemp = np.array((self.a[ep],self.a[ep]))
 
             else:
-                #dsumtemp = self.dsum[sp+1:ep+1]
                 dsumtemp = self.ga(self.dsum,[sp+1,ep])
-                #atemp = self.a[sp+1:ep+1]
                 atemp = self.ga(self.a,[sp+1,ep])
 
         if len(atemp)<2 or len(dsumtemp)<2:
@@ -464,9 +464,13 @@ class pointTracker():
             except:
                 gi = -1
                 val = 1000
-                print atemp
-                print dsumtemp
-                raise ValueError('A very specific bad thing happened')
+                logging.info('This normalization error occurred, details follow:')
+                for ddd in dsumtemp:
+                    logging.info('dsumtemp: %d' %ddd)
+                for aaa in atemp:
+                    logging.info('atemp: %d' %aaa)
+                logging.info('--------------------------------------------------')
+                #raise ValueError('A very specific bad thing happened')
             """
             if len(dsumtemp)<2:
                 gi = -1
@@ -496,6 +500,9 @@ class pointTracker():
 
     def normalizeVector(self,x,d):
         #try:
+        if len(d)==2:
+            if d[1]-d[0] == 0:
+                d[1] += .000001
         newx = np.zeros(100)
         tempd = (d-d[0])/(d[len(d)-1]-d[0])*99
         newd = range(0,100,1)
@@ -565,7 +572,10 @@ class pointTracker():
             ['Descendo',[16],False],
             ['Ascendio',[17],False],
             ['Herbivicus',[5,15],False],
-            ['Specialis Revelio',[12],False]
+            ['Specialis Revelio',[12],False],
+            ['Lumos',[2,1,9],False],
+            ['Stellae',[8,10,1,2,18],False],
+            ['Accio',[8,5,9,4],False]
             ]
 
         self.spellListConfig = spells.spelllist()
@@ -611,7 +621,7 @@ class pointTracker():
         -86.35144795,  -89.77784525,  -94.572647  ,  -99.46232221])  
         self.gestureProfile.append(x)
 
-        #upleft = 1
+        #upright = 1
         x = 150*np.ones(100)
         self.gestureProfile.append(x)
 
@@ -698,6 +708,10 @@ class pointTracker():
 
         #ascendio = 17
         x,na = self.normalizeVector(np.array([90,-180,-180]),np.array([0.0,60.0,99.0]))
+        self.gestureProfile.append(x)
+        
+        #upleft = 18
+        x = -150*np.ones(100)
         self.gestureProfile.append(x)
 
         

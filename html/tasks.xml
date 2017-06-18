@@ -1,1 +1,149 @@
-<tasks>    <task>    <enable>True</enable>    <name>mimblewimble</name>    <variable0>HPtheme.mp3</variable0>    <action>play</action>    <type>sound</type>    </task>    <task>    <enable>True</enable>    <name>incendio</name>    <variable0>Lumos.mp3</variable0>    <action>play</action>    <type>sound</type>    </task>    <task>    <enable>True</enable>    <name>arresto momentum</name>    <variable0>Arresto Momentum</variable0>    <action>espeak</action>    <type>say</type>    </task>    <task>    <enable>True</enable>    <name>wingardium leviosa</name>    <variable0>Wingardium.mp3</variable0>    <action>play</action>    <type>sound</type>    </task>    <task>    <enable>True</enable>    <name>tarantallegra</name>    <variable0>Tarantallegra</variable0>    <action>espeak</action>    <type>say</type>    </task>    <task>    <enable>True</enable>    <name>herbivicus</name>    <variable0>herbivicus</variable0>    <action>espeak</action>    <type>say</type>    </task>    <task>    <enable>True</enable>    <name>reparo</name>    <variable0>Reparo</variable0>    <action>espeak</action>    <type>say</type>    </task>    <task>    <enable>True</enable>    <name>revelio</name>    <variable0>Wizard.mp3</variable0>    <action>play</action>    <type>sound</type>    </task>    <task>    <enable>True</enable>    <name>ascendio</name>    <variable0>192.168.1.211</variable0>    <action>+brightness</action>    <type>tplinkbulb</type>    </task>    <task>    <enable>True</enable>    <name>descendo</name>    <variable0>192.168.1.211</variable0>    <action>-brightness</action>    <type>tplinkbulb</type>    </task>    <task>    <enable>True</enable>    <name>alohomora</name>    <variable0>192.168.1.211</variable0>    <action>toggle</action>    <type>tplinkbulb</type>    </task>    <task>    <enable>True</enable>    <name>metelojinx</name>    <variable0>metelojinx</variable0>    <action>espeak</action>    <type>say</type>    </task>    <task>    <enable>True</enable>    <name>silencio</name>    <variable0>silencio</variable0>    <action>espeak</action>    <type>say</type>    </task>    <task>    <enable>True</enable>    <name>locomotor</name>    <variable0>192.168.1.212</variable0>    <action>toggle</action>    <type>tplinkplug</type>    </task></tasks>
+<tasks>
+    <task>
+    <enable>True</enable>
+    <name>mimblewimble</name>
+    <variable0>HPtheme.mp3</variable0>
+    <action>play</action>
+    <type>sound</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>incendio</name>
+    <variable0>incendio</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>lumos</name>
+    <variable0>Lumos.mp3</variable0>
+    <action>play</action>
+    <type>sound</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>lumos</name>
+    <variable0>Living Room</variable0>
+    <action>on</action>
+    <type>wemo</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>lumos</name>
+    <variable0>192.168.1.211</variable0>
+    <action>on</action>
+    <type>tplinkbulb</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>stellae</name>
+    <variable0>stellae</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>accio</name>
+    <variable0>accio</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>arresto momentum</name>
+    <variable0>Arresto Momentum</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>arresto momentum</name>
+    <variable0>Living Room</variable0>
+    <action>off</action>
+    <type>wemo</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>arresto momentum</name>
+    <variable0>192.168.1.211</variable0>
+    <action>off</action>
+    <type>tplinkbulb</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>wingardium leviosa</name>
+    <variable0>wingardium leviosa</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>tarantallegra</name>
+    <variable0>Tarantallegra</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>herbivicus</name>
+    <variable0>herbivicus</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>reparo</name>
+    <variable0>Reparo</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>revelio</name>
+    <variable0>Wizard.mp3</variable0>
+    <action>play</action>
+    <type>sound</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>ascendio</name>
+    <variable0>192.168.1.211</variable0>
+    <action>+brightness</action>
+    <type>tplinkbulb</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>descendo</name>
+    <variable0>192.168.1.211</variable0>
+    <action>-brightness</action>
+    <type>tplinkbulb</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>alohomora</name>
+    <variable0>192.168.1.211</variable0>
+    <action>toggle</action>
+    <type>tplinkbulb</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>metelojinx</name>
+    <variable0>metelojinx</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>silencio</name>
+    <variable0>silencio</variable0>
+    <action>espeak</action>
+    <type>say</type>
+    </task>
+    <task>
+    <enable>True</enable>
+    <name>locomotor</name>
+    <variable0>Living Room</variable0>
+    <action>toggle</action>
+    <type>wemo</type>
+    </task>
+</tasks>

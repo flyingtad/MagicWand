@@ -2,4 +2,7 @@
 Dependencies:
 
 Python:
-numpy, cv2, ouimeaux, pyHS100, picamera, numpy, matplotlib, pylab, tplink
+numpy, ouimeaux, pyHS100, picamera, numpy, matplotlib, pylab, tplink
+
+Applications:
+hostapd, dnsmasq, dhcpd.conf

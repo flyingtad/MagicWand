@@ -4,7 +4,7 @@ from Wand import Wand
 
 def main():
     wand = Wand()
-    wand.detectSpells(20)
+    wand.detectSpells()
 
 if __name__ == '__main__':
     main()
