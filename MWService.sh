@@ -1,14 +1,9 @@
 #!/bin/bash
 
-#Update acceptable devices file
-sudo arp-scan -l | grep "50:c7:bf" | awk '{print $1}' > /var/www/html/tplink.txt
-sudo python writewemos.py
-find /home/pi/MagicWand/Sounds/* | sed 's/.*Sounds\///' > /var/www/html/sounds.txt
-
 #Force interfaces to originals
 sudo ifdown wlan0
 sudo ln -f -s /etc/network/interfaces_orig /etc/network/interfaces
-sudo ln -f -s /etc/dhcpcd_orig.conf /etc/dhcpcd.conf
+#sudo ln -f -s /etc/dhcpcd_orig.conf /etc/dhcpcd.conf
 sudo ifup wlan0
 sudo service dhcpcd restart
 
@@ -22,12 +17,17 @@ if [[ "$WLANIP" = "" ]] ; then
     echo "Not connected, start AP"
     sudo ifdown wlan0
     sudo ln -f -s /etc/network/interfaces_ap /etc/network/interfaces
-    sudo ln -f -s /etc/dhcpcd_orig.conf /etc/dhcpcd.conf
+    #sudo ln -f -s /etc/dhcpcd_orig.conf /etc/dhcpcd.conf
     sudo service dhcpcd restart
     sudo ifup wlan0
     sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf &
     sudo /usr/sbin/dnsmasq &
 else
+
+    #Update acceptable devices file
+    sudo arp-scan -l | grep "50:c7:bf" | awk '{print $1}' > /var/www/html/tplink.txt
+    sudo python writewemos.py
+    find /home/pi/MagicWand/Sounds/* | sed 's/.*Sounds\///' > /var/www/html/sounds.txt
 
  while true; do
 
