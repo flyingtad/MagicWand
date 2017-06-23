@@ -56,7 +56,12 @@ SOUND:
         wget -O - install.raspiaudio.com | bash
 
 ACCESS POINT STUFF:
+	sudo apt-get install hostapd
+        sudo apt-get install dnsmasq
+	cp misc/hostapd.conf /etc/hostapd/hostapd.conf
+        cp misc/interfaces_* /etc/network/
+        rm -f /etc/network/interfaces
 
+SETUP SERVICE STUFF
+        cp misc/magicwand /etc/init.d/
 
-Applications:
-hostapd, dnsmasq, dhcpd.conf
