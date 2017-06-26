@@ -21,6 +21,8 @@ if [[ "$WLANIP" = "" ]] ; then
     sudo service dhcpcd restart
     sudo ifup wlan0
     sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf &
+    sudo killall dnsmasq
+    sleep 3
     sudo /usr/sbin/dnsmasq &
 else
 
