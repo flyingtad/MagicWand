@@ -64,4 +64,8 @@ ACCESS POINT STUFF:
 
 SETUP SERVICE STUFF
         cp misc/magicwand /etc/init.d/
+	daemon reload
+
+Install RADIO station stuff
+	sudo apt-get install mplayer
 
