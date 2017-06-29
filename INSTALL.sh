@@ -63,7 +63,11 @@ sudo apt-get install dnsmasq
 cp misc/hostapd.conf /etc/hostapd/hostapd.conf
 cp misc/interfaces_* /etc/network/
 rm -f /etc/network/interfaces
+#disable dnsmasq from running at startup
 #NEEDS MORE WORK
+
+# INSTALL mplayer for internet radio operations
+sudo apt-get install mplayer
 
 #SETUP SERVICE STUFF
 cd ~/MagicWand
