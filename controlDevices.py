@@ -58,6 +58,8 @@ class autoControl():
                     self.speak('Alexa, %s' %svariable)
                 elif stype == 'sound':
                     self.playSound(svariable)
+                elif stype == 'radio':
+                    self.radio(svariable,saction)
                 else:
                     self.speak('%s spell has not been configured' %sname)
 
@@ -90,6 +92,23 @@ class autoControl():
 
     def speak(self,talkstring):
         os.system('espeak "%s" -s 120 &' %talkstring)
+
+    def radio(self,station,action):
+        if action == 'play':
+            os.system('sudo killall mplayer')
+            os.system('mplayer -slave -input file=/tmp/mctrl -playlist %s </dev/null >/dev/null 2>&1 &' %station)
+        elif action == 'stop':
+            os.system('sudo killall mplayer')
+        elif action == 'pause':
+            os.system('echo "p" > /tmp/mctrl')
+        elif action == '--':
+            os.system('echo "seek -60 0" > /tmp/mctrl')
+        elif action == '-':
+            os.system('echo "seek -10 0" > /tmp/mctrl')
+        elif action == '+':
+            os.system('echo "seek 10 0" > /tmp/mctrl')
+        elif action == '++':
+            os.system('echo "seek 60 0" > /tmp/mctrl')
 
     def tpTogglePlug(self, ip):
         plug = SmartPlug(ip)

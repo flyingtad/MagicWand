@@ -64,4 +64,5 @@ ACCESS POINT STUFF:
 
 SETUP SERVICE STUFF
         cp misc/magicwand /etc/init.d/
+	sudo update-rc.d magicwand defaults
 
