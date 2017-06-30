@@ -38,6 +38,8 @@ else
    if [ "$MAGWAND" =  "MagicWand.py" ] ; then
       sleep 15
    else
+      rm /tmp/mctrl
+      mkfifo /tmp/mctrl
       ./MagicWand.py &
       sleep 15
    fi
