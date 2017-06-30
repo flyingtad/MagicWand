@@ -7,8 +7,8 @@ class spells():
         allConfig = parse('/var/www/html/tasks.xml')
         allTasks = allConfig.getElementsByTagName('task')
         self.tasks = []
-        self.types = ['sound','say','tplinkplug','tplinkbulb','wemo']
-        self.actions = [['play'],['espeak'],['toggle','on','off'],['toggle','on','off','+brightness','-brightness'],['toggle','on','off']]
+        self.types = ['sound','say','tplinkplug','tplinkbulb','wemo','radio']
+        self.actions = [['play'],['espeak'],['toggle','on','off'],['toggle','on','off','+brightness','-brightness'],['toggle','on','off'],['play','stop','--','-','pause','+','++']]
 
         self.variables = []
 
@@ -36,6 +36,9 @@ class spells():
                 self.variables.append(self.readFile(filename))
             elif t == 'wemo':
                 filename = 'wemoswitches.txt'
+                self.variables.append(self.readFile(filename))
+            elif t == 'radio':
+                filename = 'radiostations.txt'
                 self.variables.append(self.readFile(filename))
             else:
                 self.variables.append([])
