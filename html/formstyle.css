@@ -1,0 +1,157 @@
+:root{
+    var-ButtonBgColor: red;
+    --button-bg-color: #fafae0;
+    var-ButtonBorderColor: red;
+    --button-border-color: #262322;
+    var-BgColor: red;
+    --bg-color: #f7d488;
+    var-TileBgColor: red;
+    --tile-bg-color:#ebebcf;
+    var-FontColor: red;
+    --font-color: #262322;
+}
+@font-face {
+    font-family: 'parry_hotterregular';
+    src: url('parryhotter-webfont.woff2') format('woff2'),
+         url('parryhotter-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.form-style-3{
+    max-width: 600px;
+    font-family: 'parry_hotterregular',"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: var(--font-color);
+    color: var(FontColor);
+    background-color: var(--bg-color);
+    background-color: var(BgColor);
+}
+
+/*a57548-fcd7ad-f6c28b-5296a5-82ddf0*/
+/*772001-cc3f0c-fa7921-fe9920-5a4028*/
+/*e0995e-f7d488-ebebcf-262322-040303*/
+
+.form-style-3 body{
+    font-family: 'parry_hotterregular';
+    color: var(--font-color);
+    color: var(FontColor);
+    background-color: var(--bg-color);
+    background-color: var(BgColor);
+}
+.titlelabel{
+    font-size:2em;
+}
+.h2{
+    max-width: 600px;
+    font-family: 'parry_hotterregular';
+    font-style: normal;
+    font-size: 3em;
+    text-align: center;
+}
+.spell{
+    max-width: 600px;
+    font-family: 'parry_hotterregular',"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background-color: var(TileBgColor,white);
+    background-color: var(--tile-bg-color);
+    border-radius:5px;
+}
+.spell div{
+    display:block;
+}
+.form-style-3 label{
+    display:block;
+    margin-bottom: 10px;
+}
+.form-style-3 label > span{
+    float: left;
+    width: 100px;
+    color: #F072A9;
+    font-weight: bold;
+    font-size: 13px;
+    text-shadow: 1px 1px 1px #fff;
+}
+.form-style-3 fieldset{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin: 0px 0px 10px 0px;
+    border: 1px solid #FFD2D2;
+    padding: 20px;
+    background: #FFF4F4;
+    box-shadow: inset 0px 0px 15px #FFE5E5;
+    -moz-box-shadow: inset 0px 0px 15px #FFE5E5;
+    -webkit-box-shadow: inset 0px 0px 15px #FFE5E5;
+}
+.form-style-3 fieldset legend{
+    color: #FFA0C9;
+    border-top: 1px solid #FFD2D2;
+    border-left: 1px solid #FFD2D2;
+    border-right: 1px solid #FFD2D2;
+    border-radius: 5px 5px 0px 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    background: #FFF4F4;
+    padding: 0px 8px 3px 8px;
+    box-shadow: -0px -1px 2px #F1F1F1;
+    -moz-box-shadow:-0px -1px 2px #F1F1F1;
+    -webkit-box-shadow:-0px -1px 2px #F1F1F1;
+    font-weight: normal;
+    font-size: 12px;
+}
+.form-style-3 textarea{
+    width:250px;
+    height:100px;
+}
+.form-style-3 input[type=text],
+.form-style-3 input[type=date],
+.form-style-3 input[type=datetime],
+.form-style-3 input[type=number],
+.form-style-3 input[type=search],
+.form-style-3 input[type=time],
+.form-style-3 input[type=url],
+.form-style-3 input[type=email],
+.form-style-3 select, 
+.form-style-3 textarea{
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid #FFC2DC;
+    outline: none;
+    //color: #F072A9;
+    //color: #956538;
+    padding: 5px 8px 5px 8px;
+    //box-shadow: inset 1px 1px 4px #FFD5E7;
+    //-moz-box-shadow: inset 1px 1px 4px #FFD5E7;
+    //-webkit-box-shadow: inset 1px 1px 4px #FFD5E7;
+    background: var(--button-bg-color);
+    width:50%;
+}
+.form-style-3  input[type=submit],
+.form-style-3  input[type=button],
+.form-style-3  button{
+    font-family: 'parry_hotterregular';
+    //background: #EB3B88;
+    //a57548-fcd7ad
+    background: var(--button-bg-color,white);
+    background-color: var(--button-bg-color,white);
+    border: 2px solid var(--button-border-color,black);
+    background: var(ButtonBgColor,white);
+    background-color: var(ButtonBgColor,white);
+    border: 2px solid var(ButtonBorderColor,black);
+    padding: 5px 15px 5px 15px;
+    //color: #1E152A;
+    //box-shadow: inset -1px -1px 3px #FF62A7;
+    //-moz-box-shadow: inset -1px -1px 3px #FF62A7;
+    //-webkit-box-shadow: inset -1px -1px 3px #FF62A7;
+    box-shadow: inset -1px -1px 3px #000000;
+    -moz-box-shadow: inset -1px -1px 3px #000000;
+    -webkit-box-shadow: inset -1px -1px 3px #000000;
+    border-radius: 3px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;    
+    //font-weight: bold;
+}
+.required{
+    color:red;
+    font-weight:normal;
+}

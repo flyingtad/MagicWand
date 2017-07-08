@@ -1,6 +1,13 @@
 import os
 from xml.dom.minidom import parse
 
+def capwords(w):
+    x=[0,w.find(' ')+1]
+    nw = list(w)
+    for xi in x:
+        nw[xi]=w[xi].upper()
+    return "".join(nw)
+
 class spells():
     def __init__(self):
         #do the config stuff here
@@ -8,7 +15,7 @@ class spells():
         allTasks = allConfig.getElementsByTagName('task')
         self.tasks = []
         self.types = ['sound','say','tplinkplug','tplinkbulb','wemo','radio']
-        self.actions = [['play'],['espeak'],['toggle','on','off'],['toggle','on','off','+brightness','-brightness'],['toggle','on','off'],['play','stop','--','-','pause','+','++']]
+        self.actions = [['play'],['espeak'],['toggle','on','off','off1on'],['toggle','on','off','+brightness','-brightness'],['toggle','on','off'],['play','stop','--','-','pause','+','++','+volume','-volume']]
 
         self.variables = []
 
@@ -22,6 +29,12 @@ class spells():
                 else:
                     allvalues[curSetting.nodeName]=self.castSettings(curSetting.childNodes[0].nodeValue)
             self.tasks.append(allvalues)
+
+    def duplicateSpell(self,idx):
+        self.tasks.insert(idx,self.tasks[idx])
+
+    def removeSpell(self,idx):
+        self.tasks.pop(idx)
 
     def buildVariables(self):
         for t in self.types:

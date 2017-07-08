@@ -85,7 +85,7 @@ window.onload = function()
 form = cgi.FieldStorage()
 if form.getvalue('subbut',"default") != "default":
     print "Settings saved, restarting wand!<br>"
-    os.system('sudo pkill HarryPotterWand')
+    os.system('sudo pkill MagicWand')
 
 print """
 <img id="img" src="image.jpg">

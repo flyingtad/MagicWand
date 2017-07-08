@@ -2,7 +2,7 @@
 
 import cgi
 import cgitb; cgitb.enable()
-from spells import spells
+from spells import spells, capwords
 from time import sleep
 import pprint as pp
 import os
@@ -14,6 +14,7 @@ print
 print """
 <html>
 <head><title>Spell Settings</title>
+<link rel="stylesheet" type="text/css" href="formstyle.css">
 <script>
 """
 
@@ -80,46 +81,97 @@ function typeChange(num){
 
 </head>
 
-<body>
-<h3>Spell Settings</h3>
+<body class="form-style-3">
+<div class="h2">Spell Settings</div>
+<div class="spell" style="text-align:center;background-color:rgba(0,0,0,0)">I solemnly swear that I am up to no good.</div>
 """
 
 form = cgi.FieldStorage()
 
-if form.getvalue('subbut',"default") != "default":
+subvalue = form.getvalue('subbut',"default")
+addorsub = False
+addidx=-1
+remidx=-1
+spellRemoveButton = {}
+if subvalue != "default":
+    if subvalue.startswith('add'):
+        addorsub = True
+        print "Saved, one item added"
+        idxchange = int(subvalue.split('_')[1])
+        addidx = idxchange
+        allspells.duplicateSpell(idxchange)
+    elif subvalue.startswith('del'):
+        addorsub = True
+        print "Saved, one item removed"
+        idxchange = int(subvalue.split('_')[1])
+        remidx = idxchange
+        allspells.removeSpell(idxchange)
     for idx in range(0,len(allspells.tasks)):
         #save the former config, then reload it
-        cb = form.getvalue('%d_cb' %idx)
-        #name = form.getvalue('%d_name' %idx)
-        type = form.getvalue('%d_type' %idx)
-        action = form.getvalue('%d_action' %idx)
-        variable0 = form.getvalue('%d_variable0' %idx)
+        modidx = idx
+        if addidx >= 0:
+            if idx>addidx:
+                modidx = idx-1
+        elif remidx >= 0:
+            if idx>=remidx:
+                modidx = idx+1
+        cb = form.getvalue('%d_cb' %modidx)
+        #name = form.getvalue('%d_name' %modidx)
+        type = form.getvalue('%d_type' %modidx)
+        action = form.getvalue('%d_action' %modidx)
+        variable0 = form.getvalue('%d_variable0' %modidx)
+        #allspells.tasks[idx]['name'] = name
         allspells.tasks[idx]['enable'] = (cb == 'on')
         allspells.tasks[idx]['type'] = type
         allspells.tasks[idx]['action'] = action
         allspells.tasks[idx]['variable0'] = variable0
     allspells.saveXML('tasks.xml')
-    print "Spells have been updated<br>"
-    os.system('sudo pkill MagicWand')
+    if subvalue == 'Save':
+        print "Spells have been updated<br>"
+        os.system('sudo pkill MagicWand')
+    elif subvalue == 'Reboot':
+        os.system('sudo reboot')
+    elif not addorsub:
+        print "Spells saved, '%s' tested" %subvalue
+        os.system('sudo -u pi echo "%s" > /tmp/tasks &' %subvalue)
+        os.system('sudo chmod 777 /tmp/tasks')
+
+for idx in range(0,len(allspells.tasks)):
+    if allspells.tasks[idx]['name'] in spellRemoveButton.keys():
+        spellRemoveButton[allspells.tasks[idx]['name']] = True
+    else:
+        spellRemoveButton[allspells.tasks[idx]['name']] = False
 
 print """
 <form method="post" action="task_settings.py">
-<table>
 """
 
 for idx in range(0,len(allspells.tasks)):
     curspell = allspells.tasks[idx]
-    print "<tr><td>"
+    print '<div class="spell"><table width="100%%"><tr>'
     if curspell['enable']:
         checkstr = ' checked="checked"'
     else:
         checkstr = ''
-    print '<input type="checkbox" name="%d_cb"%s>' %(idx,checkstr)
-    print '</td><td>%s</td>' %curspell['name']
+    print '<td style="width:30px">'
+    print '<input type="checkbox" name="%d_cb"%s></td>' %(idx,checkstr)
+
+    print '<td style="width:350px">'
+    print '<input name="%d_name" type="hidden" value="%s" style="border:0px;width:100%%" readonly>' %(idx,curspell['name'])
+    print '<label class="titlelabel">%s</label>' %capwords(curspell['name'])
+    print '</td><td>'
+    print '<button name="subbut" value="add_%d" type="submit">Duplicato</button>' %(idx)
+    print '</td><td>'
+    if spellRemoveButton[curspell['name']]:
+        print '<button name="subbut" value="del_%d" type="submit">Obliviate</button>' %(idx)
+    print '</td></tr></table><table>'
+    print '<tr><td style="width:100px"><label>Type:</label></td><td style="width:120px"><label>Action</label></td><td style="width:300"><label>Argument:</td><td></td></tr><tr>'
 
     # this is the type select box
     type = -1
-    print '<td><select id="%d_type" name="%d_type" onchange="typeChange(%d)">' %(idx,idx,idx)
+    print '<td>'
+    #print '<label>Type:</label>'
+    print '<select style="width:100%%" id="%d_type" name="%d_type" onchange="typeChange(%d)">' %(idx,idx,idx)
     for idx2 in range(0,len(allspells.types)):
         if allspells.types[idx2] == curspell['type']:
             selectedstr = ' selected="selected"'
@@ -129,7 +181,9 @@ for idx in range(0,len(allspells.tasks)):
         print '<option value="%s"%s>%s</option>' %(allspells.types[idx2],selectedstr,allspells.types[idx2])
     
     # this is the action select box
-    print '<td><div id="%d_action_div"><select id="%d_action" name="%d_action">' %(idx,idx,idx)
+    print '<td>'
+    #print '<label>Action:</label>'
+    print '<div id="%d_action_div"><select style="width:100%%" id="%d_action" name="%d_action">' %(idx,idx,idx)
     for idx2 in range(0,len(allspells.actions[type])):
         if allspells.actions[type][idx2] == curspell['action']:
             selectedstr = ' selected="selected"'
@@ -139,21 +193,26 @@ for idx in range(0,len(allspells.tasks)):
     print '</select><div></td>'
 
     # this is the variable field
+    print '<td>'
+    #print '<label>Argument:</label>'
     if len(allspells.variables[type]) > 0:
-        print '<td><div id="%d_variable_div"><select id="%d_variable0" name="%d_variable0">' %(idx,idx,idx)
+        print '<div id="%d_variable_div"><select style="width:100%%" id="%d_variable0" name="%d_variable0">' %(idx,idx,idx)
         for idx2 in range(0,len(allspells.variables[type])):
             if allspells.variables[type][idx2] == curspell['variable0']:
                 selectedstr = ' selected="selected"'
             else:
                 selectedstr = ''
             print '<option value="%s"%s>%s</option>' %(allspells.variables[type][idx2],selectedstr,allspells.variables[type][idx2])
-        print '</select><div></td>'
+        print '</select></div></td>'
     else:
-        print '<td><div id="%d_variable_div"><input type="text" id="%d_variable0" name="%d_variable0" value="%s"></div></td></tr>' %(idx,idx,idx,curspell['variable0'])
-
+        print '<div id="%d_variable_div"><input style="display:block;width:100%%" type="text" id="%d_variable0" name="%d_variable0" value="%s"></div></td>' %(idx,idx,idx,curspell['variable0'])
+    print '<td><button name="subbut" value="%s" type="submit">Test</button>' %(curspell['name'])
+    print ''
+    print '</td></tr>'
+    print "</table></div><br>"
 print """
-</table>
-<input name="subbut" type="submit">
+<input name="subbut" value="Save" type="submit">
+<input name="subbut" value="Reboot" type="submit">
 </form>
 
 </body>

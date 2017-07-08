@@ -1,4 +1,7 @@
+Horned_Owl.mp3
+HP-Owl.mp3
 HPtheme.mp3
 Lumos.mp3
+startup.mp3
 Wingardium.mp3
 Wizard.mp3

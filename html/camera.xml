@@ -1,1 +1,1 @@
-<camera>    <brightness>30</brightness>    <framerate>12</framerate>    <crop>.35,.25,.3,.5</crop>    <hflip>True</hflip>    <resolution>416,256</resolution>    <contrast>50</contrast></camera>
+<camera>    <brightness>40</brightness>    <framerate>12</framerate>    <crop>.35,.25,.3,.5</crop>    <hflip>True</hflip>    <resolution>416,256</resolution>    <contrast>50</contrast></camera>
